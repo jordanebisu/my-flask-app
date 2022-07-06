@@ -26,7 +26,6 @@ steps:
     - push
 
 - name: deploy-staging
-  values_files: [ "environments/staging.yaml" ]
   image: quay.io/mongodb/drone-helm:v3
   settings:
     chart: mongodb/web-app
@@ -34,6 +33,7 @@ steps:
     add_repos: [mongodb=https://10gen.github.io/helm-charts]
     namespace: skunkworks
     release: my-app
+    values_files: [ "environments/staging.yaml" ]
     values: image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/skunkworks/${DRONE_REPO_NAME},ingress.enabled=true,ingress.hosts[0]=my-app.skunkworks.staging.corp.mongodb.com
     api_server: https://api.staging.corp.mongodb.com
     kubernetes_token:
