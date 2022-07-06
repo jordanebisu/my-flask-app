@@ -1,4 +1,5 @@
 env:
   APP_MESSAGE: Hello, MongoDB!
-envSecrets:
-  APP_SECRET: my-secrets
+volumeSecrets:
+  - name: my-secrets
+    path: /etc/secrets
