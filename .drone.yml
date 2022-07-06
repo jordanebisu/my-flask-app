@@ -26,6 +26,7 @@ steps:
     - push
 
 - name: deploy-staging
+  values_files: [ "environments/staging.yaml" ]
   image: quay.io/mongodb/drone-helm:v3
   settings:
     chart: mongodb/web-app
@@ -40,4 +41,3 @@ steps:
   when:
     event:
     - push
-values_files: [ "environments/staging.yaml" ]
