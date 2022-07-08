@@ -3,3 +3,4 @@ env:
 volumeSecrets:
   - name: my-secrets
     path: /etc/secrets
+replicaCount: 2
